@@ -1,72 +1,101 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-
-import Animation from '../components/Animation.js'
-import Review from '@/components/Review.js'
-import Batch from '@/components/Batch.js'
-import Footer from '@/components/Footer.js'
-import React, { Component } from 'react';
-
-import DemoCarousel from '@/components/Slider.js'
-
-const inter = Inter({ subsets: ['latin'] })
+import React, { useState } from 'react';
+import Head from 'next/head';
+import Image from 'next/image';
+import Animation from '../components/Animation.js';
+import Review from '@/components/Review.js';
+import Batch from '@/components/Batch.js';
+import Footer from '@/components/Footer.js';
+import DemoCarousel from '@/components/Slider.js';
+import Cards from '@/components/Cards.js';
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-     <><title> SKILLGPT
-    </title>
-    <Head>
- <div>
-     <div className='flex  bg-blue-900 justify-between cursor-pointer h-full w-full '> 
-    <Image src="/2176.jpg" width={500} height={50} className='h-[700px] bg-contain w-full mix-blend-overlay pt-20  bg-blue-400 absolute  '  />
-    <a  href='/' className='text-4xl text-white cursor-pointer font-mono font-bold underline pt-5 pl-5'> SKILLGPT </a>
+    <>
+      <Head>
+        <title>skillgpt.com</title>
+      </Head>
 
-   < h1>  
-   </h1> 
-
-
-<ul className='pl-3 pr-2 pt-6 bg-blue-900 pb-5  px-4 space-x-3 space-y-1 font-serif hover:bg-gray-700   text-2xl text-white ' >
-<a href='/' > Home </a>
-<a href='/' >  Courses  </a>
- <a href='/' > Goals </a>
-<a href='/' > Instructors  </a>
-< a href='/' > Contact Us </a>
-
-</ul>
-<div className='pr-10 pt-6 '>
-<button className='bg-white border-cyan-900 px-2 animate-bounce text-blue-800 text-center rounded text-xl pb-3 font-sans pr-2 pt-2 pl-3 py-1' > Enroll Now
- </button>
- </div>
+      <header className="bg-black">
+    <div className="flex justify-between items-center px-8">
+      <div>
+        <a href="/" className="text-4xl text-white font-extrabold">
+          SKILLGPT
+        </a>
+      </div>
+      <div className="flex items-center">
+        <nav className="hidden sm:block space-x-4">
+          <a href="/" className="text-white hover:text-orange-500">
+            Home
+          </a>
+          <a href="/" className="text-white hover:text-orange-500">
+            Courses
+          </a>
+          <a href="/" className="text-white hover:text-orange-500">
+            Goals
+          </a>
+          <a href="/" className="text-white hover:text-orange-500">
+            Instructors
+          </a>
+          <a href="/" className="text-white hover:text-orange-500">
+            Contact Us
+          </a>
+        </nav>
+        <button
+          className="ml-4 text-white border border-cyan-900 px-6 py-2 rounded-full text-lg focus:bg-transparent"
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? 'Close' : 'Menu'}
+        </button>
+      </div>
     </div>
-    <div className='pt-64 pl-10 justify-end text-right pr-56 '>
-     < button className='bg-blue-800 px-2 animate-bounce text-white text-center rounded text-2xl pb-3 font-sans pr-2 pt-2 pl-3 py-1'>
-     SIGN UP
-     </button>
-    
-    </div>
-   
- </div>
-
-   </Head>
-   
-  
-    
-  <div>
-   <Animation/>
-
-
-   
-  
-   <DemoCarousel/>
-   <Batch/>
-   
-   <Footer/>
-
+    {isMenuOpen && (
+      <nav className="sm:hidden bg-black px-4 py-2">
+        <ul className="space-y-2">
+          <li>
+            <a href="/" className="text-white hover:text-orange-500">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="/" className="text-white hover:text-orange-500">
+              Courses
+            </a>
+          </li>
+          <li>
+            <a href="/" className="text-white hover:text-orange-500">
+              Goals
+            </a>
+          </li>
+          <li>
+            <a href="/" className="text-white hover:text-orange-500">
+              Instructors
+            </a>
+          </li>
+          <li>
+            <a href="/" className="text-white hover:text-orange-500">
+              Contact Us
+            </a>
+          </li>
+        </ul>
+      </nav>
+    )}
+  </header>
+<div>
+ <Cards />
+</div>
+  <div className="flex-grow">
+    <Animation />
+    <DemoCarousel />
+    <Batch />
   </div>
- 
+
+      <Footer />
     </>
-  )
-
-
+  );
 }

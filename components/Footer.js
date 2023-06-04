@@ -1,12 +1,13 @@
 
 import React from 'react';
 import {CiMail} from 'react-icons/ci';
+
 export default function Batch () {
     return(
-        
-        <div className='h-full pt-10 flex justify-between bg-black'>
+        <>
+        <div className='h-full pt-15 flex justify-between bg-black'>
  
-< div className='pl-20 '>
+< div className='pl-12 '>
  < h1 className='text-4xl text-white cursor-pointer font-mono font-extrabold underline pt-5 pl-7'> SKILLGPT
  </h1>
  < h1 className='text-xl  text-white cursor-pointer font-mono font-normal pt-5 pl-7'> We are india's Most Loved Coding <span className='flex'> Community. Join Us! </span>
@@ -22,7 +23,7 @@ export default function Batch () {
 
 
 
- <div className='pr-48 pb-4'>
+ <div className='pr-48 mb-10 '>
  < h1 className='text-xl  text-white cursor-pointer text font-serif pt-10 p'> HELPFUL LINKS
  </h1>
 
@@ -51,8 +52,8 @@ export default function Batch () {
  </div>
 
         </div>
- 
-       
+
+ </>
     )
 
 
